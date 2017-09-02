@@ -11,7 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
-import ShowData from './showData';
+import ShowData from './components/showData';
 
 export default class firebaseApp extends Component {
   render() {
