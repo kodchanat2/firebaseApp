@@ -11,35 +11,14 @@ import {
   Text,
   View
 } from 'react-native';
-import ShowData from './components/showData';
-import Login from './components/login';
+import Home from './components/home';
 
 export default class firebaseApp extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        {/* <ShowData/> */}
-        <Login/>
-      </View>
+      <Home/>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('firebaseApp', () => firebaseApp);
