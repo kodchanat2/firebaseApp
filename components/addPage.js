@@ -3,27 +3,70 @@ import { Text,  View, StyleSheet, TouchableHighlight } from 'react-native';
 import firebase from './firebase';
 import t from 'tcomb-form-native';
 import { Actions } from 'react-native-router-flux';
+import moment from 'moment';
 
 var Form = t.form.Form;
 
 // here we are: define your domain model
 var Person = t.struct({
-    name: t.String,              // a required string
-    surname: t.maybe(t.String),  // an optional string
-    age: t.Number,               // a required number
-    rememberMe: t.Boolean        // a boolean
+    name: t.String,
+    from: t.String,
+    date: t.Date,
+    description: t.maybe(t.String),
+    rating: t.maybe(t.enums({
+        1: '1 star',
+        2: '2 stars',
+        3: '3 stars',
+        4: '4 stars',
+        5: '5 stars',
+    }))
 });
 
-var options = {}; // optional rendering options (see documentation)
+var options = {
+    
+    fields:{
+        name: {
+            label: 'What is it?',
+            auto: "placeholders",
+            autoFocus: true
+        },
+        from: {
+            label: 'Where do you buy?',
+            auto: "placeholders",
+        },
+        date:{
+            label: 'When:',
+            config: {
+                format: (date) => {
+                  const formatedDate = moment(date).toNow();
+                  return formatedDate;
+                },
+            },
+            mode: 'time',
+        },
+        description: {
+        },
+        rating: {
+        }
+    }
+}; 
 
 export default class AddPage extends React.Component {
         
     onPress = () => {
-        // call getValue() to get the values of the form
+
         var value = this.refs.form.getValue();
-        if (value) { // if validation fails, value will be null
-            console.log(value); // value here is an instance of Person
-            Actions.home();
+        if (value) { 
+            console.log(value); 
+                    
+            firebase.database()
+            .ref('list')
+            .push()
+            .set({
+                ...this.list, 
+                ...value
+            });
+            Actions.pop();
         }
     }
     
@@ -47,7 +90,7 @@ export default class AddPage extends React.Component {
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
-        marginTop: 50,
+        marginTop: 30,
         padding: 20,
         backgroundColor: '#ffffff',
     },
