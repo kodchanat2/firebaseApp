@@ -38,7 +38,7 @@ var options = {
             label: 'When:',
             config: {
                 format: (date) => {
-                  const formatedDate = moment(date).toNow();
+                  const formatedDate = moment(date).fromNow();
                   return formatedDate;
                 },
             },
