@@ -1,5 +1,6 @@
 import React from 'react';
 import { ListView, Text,  View, StyleSheet, Image } from 'react-native';
+import moment from 'moment';
 
 export default class RowData extends React.Component {
     
@@ -22,7 +23,7 @@ export default class RowData extends React.Component {
                     }
                 </View>
                 <View style={styles.topSide}>
-                    <Text>{this.props.date}</Text>
+                    <Text>{moment(this.props.date).fromNow()}</Text>
                 </View>
             </View>
         );
