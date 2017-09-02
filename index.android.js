@@ -12,12 +12,14 @@ import {
   View
 } from 'react-native';
 import ShowData from './components/showData';
+import Login from './components/login';
 
 export default class firebaseApp extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <ShowData/>
+        {/* <ShowData/> */}
+        <Login/>
       </View>
     );
   }
