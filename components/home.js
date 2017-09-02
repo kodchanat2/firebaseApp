@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import ShowData from './showData';
+import AddPage from './addPage';
 import Login from './login';
 import { Router, Scene } from 'react-native-router-flux';
 
@@ -13,6 +14,7 @@ export default class Home extends Component {
             <Scene key="root">
                 <Scene key="login" component={Login} initial="true" hideNavBar="true" />
                 <Scene key="home" component={ShowData} title="Home" />
+                <Scene key="add" component={AddPage} title="Upload new object" />
             </Scene>
         </Router>
       </View>

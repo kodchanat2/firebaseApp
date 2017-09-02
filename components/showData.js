@@ -74,7 +74,7 @@ export default class ShowData extends React.Component {
                 dataSource={this.state.list}
                 renderRow={this._rowRender}
                 />
-                <ActionButton buttonColor="rgba(231,76,60,1)" onPress={this.addToDo}/>
+                <ActionButton buttonColor="rgba(231,76,60,1)" onPress={Actions.add}/>
             </View>
         );
     }
