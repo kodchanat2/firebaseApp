@@ -2,7 +2,7 @@ import React from 'react';
 import { Text,  View, StyleSheet, TouchableHighlight } from 'react-native';
 import firebase from './firebase';
 import t from 'tcomb-form-native';
-import ShowData from './showData';
+import { Actions } from 'react-native-router-flux';
 
 var Form = t.form.Form;
 
@@ -17,12 +17,13 @@ var Person = t.struct({
 var options = {}; // optional rendering options (see documentation)
 
 export default class Login extends React.Component {
-    
+        
     onPress = () => {
         // call getValue() to get the values of the form
         var value = this.refs.form.getValue();
         if (value) { // if validation fails, value will be null
             console.log(value); // value here is an instance of Person
+            Actions.home();
         }
     }
     

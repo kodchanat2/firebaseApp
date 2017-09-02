@@ -2,6 +2,7 @@ import React from 'react';
 import { ListView, Text,  View, TouchableOpacity } from 'react-native';
 import firebase from './firebase';
 import RowData from './rowData';
+import { Actions } from 'react-native-router-flux';
 
 export default class ShowData extends React.Component {
     constructor(props) {

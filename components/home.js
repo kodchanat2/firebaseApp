@@ -12,7 +12,7 @@ export default class Home extends Component {
         <Router sceneStyle={styles.scenes}>
             <Scene key="root">
                 <Scene key="login" component={Login} initial="true" hideNavBar="true" />
-                <Scene key="home" component={Home}/>
+                <Scene key="home" component={ShowData} title="Home" />
             </Scene>
         </Router>
       </View>
