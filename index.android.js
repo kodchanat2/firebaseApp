@@ -11,11 +11,13 @@ import {
   Text,
   View
 } from 'react-native';
+import ShowData from './showData';
 
 export default class firebaseApp extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <ShowData/>
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
