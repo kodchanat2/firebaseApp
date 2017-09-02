@@ -18,7 +18,7 @@ export default class firebaseApp extends Component {
     return (
       <View style={styles.container}>
         <ShowData/>
-        <Text style={styles.welcome}>
+        {/* <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
         <Text style={styles.instructions}>
@@ -27,7 +27,7 @@ export default class firebaseApp extends Component {
         <Text style={styles.instructions}>
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
-        </Text>
+        </Text> */}
       </View>
     );
   }
