@@ -8,13 +8,17 @@ export default class RowData extends React.Component {
             <View style={styles.container}>
                 <Image style={styles.img} source={{uri:this.props.pic}} resizeMode='cover'/>
                 <View style={styles.rightSide}>
-                    <Text style={styles.name}>name: {this.props.name}</Text>
-                    <Text>status: {this.props.status}</Text>
-                    <Text>line: {this.props.line}</Text>
+                    <Text style={styles.name}>{this.props.name}</Text>
+                    <Text>จาก: {this.props.from}</Text>
+                    { this.props.description && 
+                        <Text style={styles.description}>คำอธิบาย: {this.props.description}</Text> 
+                    }
+                    { this.props.rating && 
+                        <Text>rating: {this.props.rating}</Text>
+                    }
                 </View>
-                <View style={styles.bottomSide}>
-                    <Text>{this.props.sex}</Text>
-                    <Text> {this.props.age}</Text>
+                <View style={styles.topSide}>
+                    <Text>{this.props.date}</Text>
                 </View>
             </View>
         );
@@ -32,7 +36,7 @@ const styles = StyleSheet.create({
     img:{
         width: 100,
         height:100,
-        borderRadius: 50,
+        // borderRadius: 50,
         borderWidth: 2,
         borderColor: 'white',
     },
@@ -41,9 +45,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         // borderWidth:2,borderColor:'purple'
     },
-    bottomSide:{
-        alignSelf: 'flex-end',
+    topSide:{
+        alignSelf: 'flex-start',
         right: 0,
+        padding: 10,
         position: 'absolute',
         flexDirection: 'row',
         // borderWidth:2,borderColor:'purple'
@@ -51,5 +56,9 @@ const styles = StyleSheet.create({
     name:{
         fontWeight: 'bold',
         fontSize: 20
+    },
+    description:{
+        fontStyle: 'italic',
+        fontSize: 14
     }
 })
