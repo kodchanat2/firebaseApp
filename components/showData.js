@@ -1,8 +1,9 @@
 import React from 'react';
-import { ListView, Text,  View, TouchableOpacity } from 'react-native';
+import { ListView, Text,  View, TouchableOpacity, StyleSheet } from 'react-native';
 import firebase from './firebase';
 import RowData from './rowData';
 import { Actions } from 'react-native-router-flux';
+import ActionButton from 'react-native-action-button';
 
 export default class ShowData extends React.Component {
     constructor(props) {
@@ -55,12 +56,19 @@ export default class ShowData extends React.Component {
     // Render the list of ToDos with a Button
     render() {
         return (
-            <View>
-            <ListView
-            dataSource={this.state.list}
-            renderRow={this._rowRender}
-            />
+            <View style={styles.container}>
+                <ListView
+                dataSource={this.state.list}
+                renderRow={this._rowRender}
+                />
+                <ActionButton buttonColor="rgba(231,76,60,1)" onPress={() => console.log("notes tapped!")}/>
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container:{
+        flex:1
+    }
+})
