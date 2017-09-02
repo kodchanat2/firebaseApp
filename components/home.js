@@ -9,9 +9,9 @@ export default class Home extends Component {
     return (
       <View style={styles.container}>
         {/* <ShowData/> */}
-        <Router>
+        <Router sceneStyle={styles.scenes}>
             <Scene key="root">
-                <Scene key="login" component={Login} title="Login" initial="true" />
+                <Scene key="login" component={Login} initial="true" hideNavBar="true" />
                 <Scene key="home" component={Home}/>
             </Scene>
         </Router>
@@ -24,5 +24,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // backgroundColor: '#F5FCFF',
+  },
+  scenes:{
+      backgroundColor: 'white'
   }
 });
