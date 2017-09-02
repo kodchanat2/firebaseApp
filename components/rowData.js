@@ -6,7 +6,11 @@ export default class RowData extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Image style={styles.img} source={{uri:this.props.pic}} resizeMode='cover'/>
+                <Image 
+                    style={styles.img} 
+                    source={this.props.pic ? {uri:this.props.pic} : require('../assets/null.jpg')} 
+                    resizeMode='cover'
+                />
                 <View style={styles.rightSide}>
                     <Text style={styles.name}>{this.props.name}</Text>
                     <Text>จาก: {this.props.from}</Text>
