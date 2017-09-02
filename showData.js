@@ -1,6 +1,7 @@
 import React from 'react';
 import { ListView, Text,  View } from 'react-native';
 import firebase from './firebase';
+import RowData from './rowData';
 
 export default class ShowData extends React.Component {
     constructor(props) {
@@ -41,12 +42,10 @@ export default class ShowData extends React.Component {
     }
     
     // Render a ToDo row
-    _rowRender(item) {
+    _rowRender(props) {
         
         return (
-            <View>
-            <Text>{item.name}</Text>
-            </View>
+            <RowData {...props} />
         );
     }
     
