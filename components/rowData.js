@@ -25,7 +25,7 @@ export default class RowData extends React.Component {
 
     render() {
         return (
-            <TouchableOpacity onPress={this.showActionSheet}>
+            <TouchableOpacity onLongPress={this.showActionSheet}>
                 <View style={styles.container}>
                     <Image 
                         style={styles.img} 
