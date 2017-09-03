@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListView, Text,  View, TouchableOpacity, StyleSheet } from 'react-native';
+import { ListView, Text,  View, StyleSheet } from 'react-native';
 import firebase from './firebase';
 import RowData from './rowData';
 import { Actions } from 'react-native-router-flux';
@@ -47,9 +47,7 @@ export default class ShowData extends React.Component {
     _rowRender(props) {
         
         return (
-            <TouchableOpacity>
-                <RowData {...props} />
-            </TouchableOpacity>
+            <RowData {...props} />
         );
     }
     

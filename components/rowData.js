@@ -1,31 +1,60 @@
 import React from 'react';
-import { ListView, Text,  View, StyleSheet, Image } from 'react-native';
+import { ListView, Text,  View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import moment from 'moment';
+import ActionSheet from 'react-native-actionsheet';
 
 export default class RowData extends React.Component {
-    
+    constructor(){
+        super();
+        this.state = {
+            selected: ''
+        }
+        this.handlePress = this.handlePress.bind(this)
+        this.showActionSheet = this.showActionSheet.bind(this)
+    }
+
+    showActionSheet() {
+        this.ActionSheet.show()
+    }
+
+    handlePress(i) {
+        this.setState({
+            selected: i
+        })
+    }
+
     render() {
         return (
-            <View style={styles.container}>
-                <Image 
-                    style={styles.img} 
-                    source={this.props.pic ? {uri:this.props.pic} : require('../assets/upload.png')} 
-                    resizeMode='cover'
-                />
-                <View style={styles.rightSide}>
-                    <Text style={styles.name}>{this.props.name}</Text>
-                    <Text>จาก: {this.props.from}</Text>
-                    { this.props.description && 
-                        <Text style={styles.description}>คำอธิบาย: {this.props.description}</Text> 
-                    }
-                    { this.props.rating && 
-                        <Text>rating: {this.props.rating}</Text>
-                    }
+            <TouchableOpacity onPress={this.showActionSheet}>
+                <View style={styles.container}>
+                    <Image 
+                        style={styles.img} 
+                        source={this.props.pic ? {uri:this.props.pic} : require('../assets/upload.png')} 
+                        resizeMode='cover'
+                    />
+                    <View style={styles.rightSide}>
+                        <Text style={styles.name}>{this.props.name}</Text>
+                        <Text>จาก: {this.props.from}</Text>
+                        { this.props.description && 
+                            <Text style={styles.description}>คำอธิบาย: {this.props.description}</Text> 
+                        }
+                        { this.props.rating && 
+                            <Text>rating: {this.props.rating}</Text>
+                        }
+                    </View>
+                    <View style={styles.topSide}>
+                        <Text>{moment(this.props.date).calendar()}</Text>
+                    </View>
+                    
+                    <ActionSheet
+                        ref={o => this.ActionSheet = o}
+                        options={['Cancel','Edit','Delete']}
+                        cancelButtonIndex={0}
+                        destructiveButtonIndex={2}
+                        onPress={this.handlePress}
+                    />
                 </View>
-                <View style={styles.topSide}>
-                    <Text>{moment(this.props.date).calendar()}</Text>
-                </View>
-            </View>
+            </TouchableOpacity>
         );
     }
 }
