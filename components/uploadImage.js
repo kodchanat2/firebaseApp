@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         borderWidth: 3,
         borderColor: "#eee",
-        marginBottom: 50
+        marginBottom: 50,
+        backgroundColor: "#eee"
     },
     overlay:{
         flex:1,
