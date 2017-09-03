@@ -4,6 +4,7 @@ import firebase from './firebase';
 import t from 'tcomb-form-native';
 import { Actions } from 'react-native-router-flux';
 import moment from 'moment';
+import UploadImage from './uploadImage';
 
 var Form = t.form.Form;
 
@@ -73,6 +74,7 @@ export default class AddPage extends React.Component {
         return (
             <View  style={styles.container}>
                 <ScrollView style={styles.scroll}>
+                    <UploadImage/>
                     <Form
                         ref="form"
                         type={Person}
