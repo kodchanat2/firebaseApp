@@ -62,6 +62,10 @@ export default class AddPage extends React.Component {
             var ref = firebase.database().ref('list').push();
 
             ref.set(value).then(()=>{
+                if(!this.state.image){
+                    Actions.pop();
+                    return;
+                }
                 __uploadImage(ref.key, this.state.image.uri)
                 .then(()=>{
                     Actions.pop();
