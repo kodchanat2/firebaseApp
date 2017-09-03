@@ -41,7 +41,9 @@ export default class UploadImage extends React.Component {
         return (
             <View>
                 <TouchableOpacity onPress={this.onPress}>
-                    <Image source={this.state.avatarSource || require('../assets/null.jpg')} style={styles.img} />
+                    <Image source={this.state.avatarSource || require('../assets/upload.png')} style={styles.img}>
+                        <Image source={require('../assets/upload.png')} style={styles.overlay} />
+                    </Image>
                 </TouchableOpacity>
             </View>
         );
@@ -57,5 +59,13 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: "#eee",
         marginBottom: 50
+    },
+    overlay:{
+        flex:1,
+        opacity: 0.2,
+        width:350,
+        alignSelf: 'center',
+        height:350,
+
     }
 });

@@ -9,7 +9,7 @@ export default class RowData extends React.Component {
             <View style={styles.container}>
                 <Image 
                     style={styles.img} 
-                    source={this.props.pic ? {uri:this.props.pic} : require('../assets/null.jpg')} 
+                    source={this.props.pic ? {uri:this.props.pic} : require('../assets/upload.png')} 
                     resizeMode='cover'
                 />
                 <View style={styles.rightSide}>
