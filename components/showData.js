@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListView, Text,  View, StyleSheet } from 'react-native';
+import { FlatList, Text,  View, StyleSheet } from 'react-native';
 import firebase from './firebase';
 import RowData from './rowData';
 import { Actions } from 'react-native-router-flux';
@@ -9,16 +9,10 @@ export default class ShowData extends React.Component {
     constructor(props) {
         super(props);
         this.ref = null;
-        this.listView = new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 !== r2,
-        });
-        
         this.state = {
-            list: this.listView.cloneWithRows({}),
+            list: [],
         };
         
-        // Keep a local reference of the TODO items
-        this.list = {};
     }
     
     // Load the Todos on mount
@@ -37,9 +31,10 @@ export default class ShowData extends React.Component {
     // Handle ToDo updates
     handleToDoUpdate = (snapshot) => {
         this.list = snapshot.val() || {};
+        this.list = Object.keys(this.list).map((k) => this.list[k])
         console.log(this.list);
         this.setState({
-            list: this.listView.cloneWithRows(this.list),
+            list: this.list,
         });
     }
     
@@ -55,9 +50,9 @@ export default class ShowData extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <ListView
-                dataSource={this.state.list}
-                renderRow={this._rowRender}
+                <FlatList
+                data={this.state.list}
+                renderItem={this._rowRender}
                 />
                 <ActionButton buttonColor="rgba(231,76,60,1)" onPress={Actions.add}/>
             </View>
