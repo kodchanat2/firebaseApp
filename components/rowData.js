@@ -23,7 +23,7 @@ export default class RowData extends React.Component {
                     }
                 </View>
                 <View style={styles.topSide}>
-                    <Text>{moment(this.props.date).fromNow()}</Text>
+                    <Text>{moment(this.props.date).calendar()}</Text>
                 </View>
             </View>
         );

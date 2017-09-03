@@ -32,7 +32,7 @@ var options = {
             label: 'When:',
             config: {
                 format: (date) => {
-                  const formatedDate = moment(date).fromNow();
+                  const formatedDate = moment(date).calendar();
                   return formatedDate;
                 },
             },
