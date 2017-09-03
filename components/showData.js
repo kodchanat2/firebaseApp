@@ -42,19 +42,6 @@ export default class ShowData extends React.Component {
             list: this.listView.cloneWithRows(this.list),
         });
     }
-    addToDo() {
-        firebase.database()
-        .ref('list')
-        .push()
-        .set({
-            ...this.list, 
-            ...{
-                date: "12-02-2017",
-                from: "จอห์น",
-                name: "ไข่เจียว"
-            }
-        });
-      }
     
     // Render a ToDo row
     _rowRender(props) {
