@@ -19,6 +19,10 @@ export default class ShowData extends React.Component {
     componentDidMount() {
         this.ref = firebase.database().ref('list');
         this.ref.on('value', this.handleToDoUpdate);
+        firebase.messaging().getToken()
+        .then((token) => {
+          console.log('Device FCM Token: ', token);
+        });
     }
     
     // Unsubscribe from the todos on unmount
