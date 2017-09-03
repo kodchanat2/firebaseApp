@@ -13,8 +13,8 @@ var options = {
 };
 
 export default class UploadImage extends React.Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             avatarSource: null
         };
@@ -34,6 +34,8 @@ export default class UploadImage extends React.Component {
                 this.setState({
                     avatarSource: source
                 });
+
+                this.props.onSelectImage(response);
             }
         });
     }

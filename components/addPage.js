@@ -46,6 +46,12 @@ var options = {
 }; 
 
 export default class AddPage extends React.Component {
+    constructor(){
+        super();
+        this.state = {
+            image: null
+        }
+    }
         
     onPress = () => {
 
@@ -56,16 +62,44 @@ export default class AddPage extends React.Component {
             var ref = firebase.database().ref('list').push();
 
             ref.set(value).then(()=>{
-                Actions.pop();
+                __uploadImage(ref.key, this.state.image.uri)
+                .then(()=>{
+                    Actions.pop();
+                });
             })
         }
+            
+        __uploadImage = (key, path) => {
+            return firebase.storage()
+            .ref(`/pic/${key}`)
+            .putFile( path, {contentType: 'image/jpeg'})
+            .then(uploadedFile => {
+                //success
+                console.log('success',uploadedFile.downloadUrl);
+                return __matchImageURL(key, uploadedFile.downloadUrl);
+            })
+            .catch(err => {
+                //Error
+                console.log(err);
+            });
+        }
+        __matchImageURL = (key, url) => {
+            return firebase.database()
+                    .ref(`list/${key}`)
+                    .update({pic: url})
+        }
+    }
+
+
+    onSelectImage = (res) => {
+        this.setState({image : res});
     }
     
     render() {
         return (
             <View  style={styles.container}>
                 <ScrollView style={styles.scroll}>
-                    <UploadImage/>
+                    <UploadImage onSelectImage={this.onSelectImage}/>
                     <Form ref="form" type={Person} options={options} />
                 </ScrollView>
                 <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
