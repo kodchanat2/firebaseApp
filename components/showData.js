@@ -42,7 +42,7 @@ export default class ShowData extends React.Component {
     _rowRender(props) {
         
         return (
-            <RowData {...props} />
+            <RowData {...props.item} />
         );
     }
     
