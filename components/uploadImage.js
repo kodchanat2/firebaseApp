@@ -8,7 +8,8 @@ var options = {
         skipBackup: true,
         path: 'images',
         mediaType: 'photo'
-    }
+    },
+    quality: 0.5,
 };
 
 export default class UploadImage extends React.Component {
