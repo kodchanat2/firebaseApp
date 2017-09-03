@@ -14,13 +14,7 @@ var Person = t.struct({
     from: t.String,
     date: t.Date,
     description: t.maybe(t.String),
-    rating: t.maybe(t.enums({
-        1: '1 star',
-        2: '2 stars',
-        3: '3 stars',
-        4: '4 stars',
-        5: '5 stars',
-    }))
+    rating: t.maybe(t.enums({ 1: '1 star', 2: '2 stars', 3: '3 stars', 4: '4 stars', 5: '5 stars' }))
 });
 
 var options = {
@@ -59,14 +53,11 @@ export default class AddPage extends React.Component {
         if (value) { 
             console.log(value); 
                     
-            firebase.database()
-            .ref('list')
-            .push()
-            .set({
-                ...this.list, 
-                ...value
-            });
-            Actions.pop();
+            var ref = firebase.database().ref('list').push();
+
+            ref.set(value).then(()=>{
+                Actions.pop();
+            })
         }
     }
     
@@ -75,11 +66,7 @@ export default class AddPage extends React.Component {
             <View  style={styles.container}>
                 <ScrollView style={styles.scroll}>
                     <UploadImage/>
-                    <Form
-                        ref="form"
-                        type={Person}
-                        options={options}
-                    />
+                    <Form ref="form" type={Person} options={options} />
                 </ScrollView>
                 <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
                     <Text style={styles.buttonText}>Upload</Text>
