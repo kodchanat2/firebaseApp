@@ -23,6 +23,7 @@ import io.invertase.firebase.database.RNFirebaseDatabasePackage; // Firebase Rea
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage; // Firebase Cloud Messaging
 import io.invertase.firebase.perf.RNFirebasePerformancePackage; // Firebase Performance
 import io.invertase.firebase.storage.RNFirebaseStoragePackage; // Firebase Storage
+import com.imagepicker.ImagePickerPackage; // <-- add this import
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -46,7 +47,8 @@ public class MainApplication extends Application implements ReactApplication {
           new RNFirebaseDatabasePackage(),
           new RNFirebaseMessagingPackage(),
           new RNFirebasePerformancePackage(),
-          new RNFirebaseStoragePackage()
+          new RNFirebaseStoragePackage(),
+          new ImagePickerPackage() // <-- add this line
       );
     }
   };
