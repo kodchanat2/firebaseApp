@@ -3,10 +3,11 @@ import { View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 
 var options = {
-    title: 'Select Avatar',
+    title: 'Select Picture',
     storageOptions: {
         skipBackup: true,
-        path: 'images'
+        path: 'images',
+        mediaType: 'photo'
     }
 };
 
