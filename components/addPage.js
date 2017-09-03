@@ -28,7 +28,6 @@ var options = {
         name: {
             label: 'What is it?',
             auto: "placeholders",
-            autoFocus: true
         },
         from: {
             label: 'Where do you buy?',
