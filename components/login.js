@@ -41,6 +41,22 @@ export default class Login extends React.Component {
                 // Actions.home();
             }
         });
+
+        // firebase.messaging().subscribeToTopic('foobar');
+        firebase.messaging().onMessage((message) => {
+            alert(message);
+            console.log('EWQE',message);
+            if(message.topic == '101'){
+                alert('ยังอยู่ในหน้านี้หรอ');
+            }
+        });
+        firebase.messaging().getInitialNotification()
+        .then((notification) => {
+          console.log('Notification which opened the app: ', notification);
+          if(notification.topic == '101'){
+              alert('โดนหลอกแล้ว อิอิ');
+          }
+        });
     }
 
     componentWillUnmount() {
