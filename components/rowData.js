@@ -2,6 +2,7 @@ import React from 'react';
 import { ListView, Text,  View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import moment from 'moment';
 import ActionSheet from 'react-native-actionsheet';
+import Rating from 'react-native-easy-rating'
 
 export default class RowData extends React.Component {
     constructor(){
@@ -26,6 +27,8 @@ export default class RowData extends React.Component {
     render() {
         return (
             <TouchableOpacity onLongPress={this.showActionSheet}>
+                
+
                 <View style={styles.container}>
                     <Image 
                         style={styles.img} 
@@ -38,8 +41,18 @@ export default class RowData extends React.Component {
                         { this.props.description && 
                             <Text style={styles.description}>คำอธิบาย: {this.props.description}</Text> 
                         }
-                        { this.props.rating && 
+                        {/* { this.props.rating && 
                             <Text>rating: {this.props.rating}</Text>
+                        } */}
+                        { this.props.rating && 
+                            <Rating
+                                rating={this.props.rating}
+                                max={5}
+                                iconWidth={24}
+                                iconHeight={24}
+                                iconSelected={require('../assets/star.png')}
+                                iconUnselected={require('../assets/nostar.png')}
+                            />
                         }
                     </View>
                     <View style={styles.topSide}>
